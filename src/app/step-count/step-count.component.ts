@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Apollo} from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
 const stepCountQuery = gql`
-{
-  hello
-}
+  {
+    hello
+  }
 `;
 
 @Component({
@@ -17,19 +17,17 @@ export class StepCountComponent implements OnInit {
   hello: string;
   loading = true;
   errors: any;
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo) {}
 
   ngOnInit() {
-      this.apollo
-        .watchQuery({
-          query: stepCountQuery,
-        })
-        .valueChanges.subscribe(result => {
-          this.hello = result.data && result.data['hello'];
-          this.loading = result.loading;
-          this.errors = result.errors;
-        });
-    }
+    this.apollo
+      .watchQuery({
+        query: stepCountQuery
+      })
+      .valueChanges.subscribe(result => {
+        this.hello = result.data && result.data['hello'];
+        this.loading = result.loading;
+        this.errors = result.errors;
+      });
   }
-
 }
