@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { WatcherBoardComponent } from './watcher-board/watcher-board.component';
+const routes: Routes = [
+  { path: '', redirectTo: 'watcher', pathMatch: 'full' },
+  {path: 'watcher', component: WatcherBoardComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
