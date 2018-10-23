@@ -9,11 +9,13 @@ import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButt
 import { LayoutModule } from '@angular/cdk/layout';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { StepCountComponent } from './step-count/step-count.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WatcherBoardComponent
+    WatcherBoardComponent,
+    StepCountComponent
   ],
   imports: [
     BrowserModule,
