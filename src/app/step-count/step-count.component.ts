@@ -6,6 +6,8 @@ const stepCountQuery = gql`
   {
     hello
     stepCount
+    runTime
+    walkTime
   }
 `;
 
@@ -17,6 +19,8 @@ const stepCountQuery = gql`
 export class StepCountComponent implements OnInit {
   hello = 'hok';
   stepCount: number;
+  runTime: number;
+  walkTime: number;
   loading = true;
   errors: any;
   constructor(private apollo: Apollo) {}
@@ -28,6 +32,8 @@ export class StepCountComponent implements OnInit {
       })
       .valueChanges.subscribe(result => {
         this.stepCount = result.data && result.data['stepCount'];
+        this.runTime = result.data && result.data['runTime'];
+        this.walkTime = result.data && result.data['walkTime'];
         this.loading = result.loading;
         this.errors = result.errors;
       });
