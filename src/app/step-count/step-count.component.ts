@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 const stepCountQuery = gql`
   {
     hello
+    stepCount
   }
 `;
 
@@ -14,7 +15,8 @@ const stepCountQuery = gql`
   styleUrls: ['./step-count.component.scss']
 })
 export class StepCountComponent implements OnInit {
-  hello: string;
+  hello = 'hok';
+  stepCount: number;
   loading = true;
   errors: any;
   constructor(private apollo: Apollo) {}
@@ -25,7 +27,7 @@ export class StepCountComponent implements OnInit {
         query: stepCountQuery
       })
       .valueChanges.subscribe(result => {
-        this.hello = result.data && result.data['hello'];
+        this.stepCount = result.data && result.data['stepCount'];
         this.loading = result.loading;
         this.errors = result.errors;
       });
