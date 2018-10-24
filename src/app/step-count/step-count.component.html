@@ -8,4 +8,7 @@
   <h1>{{stepCount}} steps</h1>
   <h1>{{runTime}} mins</h1>
   <h1>{{walkTime}} mins</h1>
+  <div *ngFor="let segment of activeTimeDetails.runTimeSegments">
+    <p>start: {{segment.startTime}} end: {{segment.endTime}}</p>
+  </div>
 </div>

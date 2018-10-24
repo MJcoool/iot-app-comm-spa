@@ -8,8 +8,23 @@ const stepCountQuery = gql`
     stepCount
     runTime
     walkTime
+    activeTimeDetails {
+      runTimeSegments {
+        startTime
+        endTime
+      }
+    }
   }
 `;
+
+interface TimeSegment {
+  startTime: number;
+  endTime: number;
+}
+interface ActiveTimeDetails {
+  runTimeSegments?: TimeSegment[];
+  walkTimeSegments?: TimeSegment[];
+}
 
 @Component({
   selector: 'app-step-count',
@@ -21,6 +36,7 @@ export class StepCountComponent implements OnInit {
   stepCount: number;
   runTime: number;
   walkTime: number;
+  activeTimeDetails: ActiveTimeDetails;
   loading = true;
   errors: any;
   constructor(private apollo: Apollo) {}
@@ -34,6 +50,7 @@ export class StepCountComponent implements OnInit {
         this.stepCount = result.data && result.data['stepCount'];
         this.runTime = result.data && result.data['runTime'];
         this.walkTime = result.data && result.data['walkTime'];
+        this.activeTimeDetails = result.data && result.data['activeTimeDetails'];
         this.loading = result.loading;
         this.errors = result.errors;
       });
