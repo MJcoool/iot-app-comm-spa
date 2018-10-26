@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WatcherBoardComponent } from './watcher-board/watcher-board.component';
@@ -11,6 +11,11 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StepCountComponent } from './step-count/step-count.component';
 
+const routes: Routes = [
+  { path: '', redirectTo: 'watcher', pathMatch: 'full' },
+  { path: 'watcher', component: WatcherBoardComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,8 +24,8 @@ import { StepCountComponent } from './step-count/step-count.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    RouterModule.forRoot(routes),
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
